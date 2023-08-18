@@ -4,7 +4,7 @@
 <h3>Template File</h3>
 <input type="file" class="file-upload" (change)="uploadTemplateFile($event)">
 
-<input type="button" value="Start Processing" (click)="startProcessing()">
+<input type="button" value="Start Processing" (click)="startProcessing()" [disabled]="isDisabled">
 <!-- <h2>Send a message to the server:</h2>
 <form (ngSubmit)="sendMessage(message); message = ''">
   <input [(ngModel)]="message" name="message" type="text" autocomplete="off" />
@@ -22,7 +22,7 @@
 <h2>Errors during Transformation:</h2>
 <div style="max-height: 200px; overflow: scroll; white-space: pre; color: red">
   <ul>
-    <li *ngFor="let data of webSocketService.receivedData">
+    <li *ngFor="let data of webSocketService.receivedData | filterMessage('ERROR:')">
       <div *ngIf="data.message.startsWith('ERROR:')">{{ data.message }}</div>
     </li>
   </ul>

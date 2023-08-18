@@ -14,6 +14,7 @@ interface MessageData {
   providedIn: 'root',
 })
 export class UploadService {
+  
     constructor(private http: HttpClient) {}
     fileName = '';
     public uploadFile(uploadedFile:File, type:string, session: string): void {
@@ -42,10 +43,9 @@ export class UploadService {
   public processFiles(session: string) {
     const formData = new FormData();
     formData.append("session", session);
-    this.http.post(`${environment.apiUrl}/process`, formData, {responseType: 'blob'}).subscribe((response:any) => {
-        this.saveFile(response, "generated.csv");
-    });
+    return this.http.post(`${environment.apiUrl}/process`, formData, {responseType: 'blob'});
   }
+
 
   public saveFile(blob: Blob, filename: string) {
     
@@ -60,5 +60,12 @@ export class UploadService {
     aElement.remove();    
     
   }
-
+  downloadFile(sessionId: string, file_guid: string) {
+    const formData = new FormData();
+    formData.append("session", sessionId);
+    formData.append("file_guid", file_guid);
+    this.http.post(`${environment.apiUrl}/process`, formData, {responseType: 'blob'}).subscribe((response:any) => {
+        this.saveFile(response, "generated.csv");
+    });
+  }
 }

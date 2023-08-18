@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { environment } from '../environments/environment';
+import { Subject } from 'rxjs';
+import { MessageData } from './models/message-data.model';
 
-interface MessageData {
-  message: string;
-  time?: string;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +11,8 @@ interface MessageData {
 export class WebSocketService {
   private socket$!: WebSocketSubject<any>;
   private human_socket$!: WebSocketSubject<any>;
+  private readonly latestData$: Subject<MessageData> = new Subject<MessageData>();
+  public readonly latestData = this.latestData$.asObservable();
   public receivedData: MessageData[] = [];
   public promptData: MessageData = { message: '' };
   public connect(sessionId: string): void {
@@ -21,6 +21,7 @@ export class WebSocketService {
       this.human_socket$ = webSocket(`${environment.humanWebSocketUrl}/${sessionId}`);
       this.socket$.subscribe((data: MessageData) => {
         this.receivedData.push(data);
+        this.latestData$.next(data);
       });
       this.human_socket$.subscribe((data: MessageData) => {
         this.promptData = data;
