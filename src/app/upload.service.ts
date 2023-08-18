@@ -64,7 +64,7 @@ export class UploadService {
     const formData = new FormData();
     formData.append("session", sessionId);
     formData.append("file_guid", file_guid);
-    this.http.post(`${environment.apiUrl}/process`, formData, {responseType: 'blob'}).subscribe((response:any) => {
+    this.http.post(`${environment.apiUrl}/download`, formData, {responseType: 'blob'}).subscribe((response:any) => {
         this.saveFile(response, "generated.csv");
     });
   }
