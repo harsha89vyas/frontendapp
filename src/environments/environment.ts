@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  webSocketUrl: 'ws://localhost:8000/ws',
-  apiUrl: 'http://localhost:8000/api',
-  humanWebSocketUrl: 'ws://localhost:8000/human',
+  webSocketUrl: 'ws://backendapp-lang-c4717859eb2b.herokuapp.com/ws',
+  apiUrl: 'https://backendapp-lang-c4717859eb2b.herokuapp.com/api',
+  humanWebSocketUrl: 'ws://backendapp-lang-c4717859eb2b.herokuapp.com/human',
 };
