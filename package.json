@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --port 4200",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build --configuration production"
+    "heroku-postbuild": "ng build --configuration production",
+    "postinstall": "npm run build"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +43,5 @@
   "engines": {
     "node": "v18.13.0",
     "npm": "8.19.3"
-  },
-  "postinstall": "npm run build",
-  "start" : "node server.js"
+  }
 }
