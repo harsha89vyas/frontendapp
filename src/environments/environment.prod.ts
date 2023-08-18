@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  webSocketUrl: 'ws://test-app-12323-3c51b07f419c.herokuapp.com/ws',
-  apiUrl: 'https://test-app-12323-3c51b07f419c.herokuapp.com/api',
-  humanWebSocketUrl: 'ws://test-app-12323-3c51b07f419c.herokuapp.com/human',
+  webSocketUrl: 'ws://backendapp-lang-c4717859eb2b.herokuapp.com/ws',
+  apiUrl: 'https://backendapp-lang-c4717859eb2b.herokuapp.com/api',
+  humanWebSocketUrl: 'ws://backendapp-lang-c4717859eb2b.herokuapp.com/human',
 };
