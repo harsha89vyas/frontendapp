@@ -22,7 +22,7 @@
 <h2>Errors during Transformation:</h2>
 <div style="max-height: 200px; overflow: scroll; white-space: pre; color: red">
   <ul>
-    <li *ngFor="let data of webSocketService.receivedData | filterMessage('ERROR:')">
+    <li *ngFor="let data of webSocketService.receivedData | filterMessage:['ERROR:']">
       <div *ngIf="data.message.startsWith('ERROR:')">{{ data.message }}</div>
     </li>
   </ul>
